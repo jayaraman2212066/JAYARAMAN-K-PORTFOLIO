@@ -1,13 +1,13 @@
 
 import React from 'react';
-import { Code, Palette, Zap, Trophy } from 'lucide-react';
+import { Code, GraduationCap, Briefcase, Award } from 'lucide-react';
 
 const About = () => {
   const achievements = [
-    { icon: Code, label: '50+ Projects', desc: 'Completed' },
-    { icon: Palette, label: '5 Years', desc: 'Experience' },
-    { icon: Zap, label: '99%', desc: 'Client Satisfaction' },
-    { icon: Trophy, label: '10+', desc: 'Awards Won' },
+    { icon: Code, label: '5+ Projects', desc: 'Completed' },
+    { icon: GraduationCap, label: 'B.Tech IT', desc: 'CGPA: 7.5' },
+    { icon: Briefcase, label: '1+ Year', desc: 'Experience' },
+    { icon: Award, label: 'Scout Captain', desc: '2017' },
   ];
 
   return (
@@ -18,9 +18,9 @@ const About = () => {
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          I'm a passionate full-stack developer with expertise in modern web technologies. 
-          I love creating beautiful, functional applications that solve real-world problems 
-          and deliver exceptional user experiences.
+          I'm a passionate Information Technology graduate from SSN College of Engineering with expertise in 
+          Machine Learning, Deep Learning, and Full-Stack Development. I love creating innovative solutions 
+          that solve real-world problems using cutting-edge technologies.
         </p>
       </div>
 
@@ -39,19 +39,46 @@ const About = () => {
         ))}
       </div>
 
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-        <h3 className="text-2xl font-bold text-white mb-6">My Journey</h3>
-        <p className="text-gray-300 leading-relaxed mb-6">
-          Started as a curious student who fell in love with coding. Over the years, 
-          I've evolved into a versatile developer who thrives on challenges and 
-          continuous learning. My passion lies in creating digital experiences 
-          that not only look great but also perform exceptionally.
-        </p>
-        <p className="text-gray-300 leading-relaxed">
-          When I'm not coding, you'll find me exploring new technologies, 
-          contributing to open-source projects, or mentoring aspiring developers. 
-          I believe in the power of technology to transform ideas into reality.
-        </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h3 className="text-2xl font-bold text-white mb-6">Education</h3>
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-blue-400">SSN College of Engineering</h4>
+              <p className="text-gray-300">B.Tech in Information Technology</p>
+              <p className="text-gray-400">CGPA: 7.5 | Sep 2021 - May 2026</p>
+              <p className="text-sm text-gray-500">Chennai, India</p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-blue-400">Valivalm Desikar Polytechnic College</h4>
+              <p className="text-gray-300">Diploma in Engineering</p>
+              <p className="text-gray-400">96/100 | Jun 2019 - May 2022</p>
+              <p className="text-sm text-gray-500">Nagapattinam, India</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+          <h3 className="text-2xl font-bold text-white mb-6">Work Experience</h3>
+          <div className="space-y-6">
+            <div>
+              <h4 className="text-lg font-semibold text-blue-400">Hi Trans Service Pvt. Ltd.</h4>
+              <p className="text-gray-300">Project Junior Engineer</p>
+              <p className="text-gray-400">Jun 2022 - Dec 2022</p>
+              <p className="text-sm text-gray-300 mt-2">
+                Supervised HVAC work for Tata Electronics, handled communication and daily targets.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold text-blue-400">Sunmar Chemplast Pvt. Ltd.</h4>
+              <p className="text-gray-300">Junior Engineer</p>
+              <p className="text-gray-400">Jan 2023 - Jul 2023</p>
+              <p className="text-sm text-gray-300 mt-2">
+                Handled chemical plant operations, pump maintenance, and daily reporting.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

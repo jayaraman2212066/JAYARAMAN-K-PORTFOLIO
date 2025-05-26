@@ -32,17 +32,26 @@ const Hero = () => {
       <div className="text-center z-10 px-6">
         <div className="animate-fade-in">
           <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-6 animate-scale-in">
-            John Developer
+            Jayaraman K
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in delay-300">
-            Full Stack Developer & Creative Technologist
+          <p className="text-xl md:text-2xl text-gray-300 mb-4 animate-fade-in delay-300">
+            B.Tech in Information Technology
+          </p>
+          <p className="text-lg text-gray-400 mb-8 animate-fade-in delay-400">
+            Project Junior Engineer | Machine Learning Enthusiast
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
-              View My Work
+            <button 
+              onClick={() => window.open('/projects', '_self')}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-blue-500/25"
+            >
+              View My Projects
             </button>
-            <button className="px-8 py-4 border border-blue-400 text-blue-400 rounded-full font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105">
-              Download Resume
+            <button 
+              onClick={() => window.open('mailto:jayaraman2212066@ssn.edu.in')}
+              className="px-8 py-4 border border-blue-400 text-blue-400 rounded-full font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105"
+            >
+              Contact Me
             </button>
           </div>
         </div>

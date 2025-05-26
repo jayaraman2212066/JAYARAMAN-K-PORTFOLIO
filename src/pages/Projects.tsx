@@ -3,39 +3,46 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import ParticleBackground from '@/components/ParticleBackground';
 import ProjectCard from '@/components/ProjectCard';
-import { ExternalLink, Github } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment processing, and real-time inventory management.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Bridge Game Mini Project",
+      description: "A complete bridge card game implementation with multiplayer support, game state management, documentation, and binomial heap extraction algorithms.",
+      image: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5",
+      tags: ["Python", "JavaScript", "HTML", "CSS", "Game Development"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/jayaraman2212066",
     },
     {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-      tags: ["React", "Socket.io", "Express", "PostgreSQL"],
+      title: "CO2 Emission Detection using ML",
+      description: "Deep learning model for CO concentration classification using time-series sensor data with optimized architecture and cross-validation.",
+      image: "https://images.unsplash.com/photo-1581833971358-2c8b550f87b3",
+      tags: ["Python", "JavaScript", "HTML", "CSS", "Machine Learning", "Deep Learning"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/jayaraman2212066",
     },
     {
-      title: "Weather Dashboard",
-      description: "A responsive weather application with location-based forecasts, interactive maps, and historical weather data visualization.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-      tags: ["Vue.js", "Weather API", "Chart.js", "Tailwind"],
+      title: "LidarBased Road Anomaly Detection",
+      description: "Real-time road surface anomaly detection system using YOLOv8 model with LIDAR sensor data for pothole and speed bump detection.",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64",
+      tags: ["Python", "JavaScript", "HTML", "CSS", "YOLO", "Computer Vision"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/jayaraman2212066",
     },
     {
-      title: "Social Media Analytics",
-      description: "An analytics dashboard for social media metrics with real-time data visualization and performance insights.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-      tags: ["React", "D3.js", "Python", "Flask"],
+      title: "DQN-Snake Game (Reinforcement Learning)",
+      description: "Modular Snake Game in Flutter with both manual and AI gameplay modes using Q-learning based Reinforcement Learning agent.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420",
+      tags: ["Flutter", "Dart", "Reinforcement Learning", "Q-Learning", "Game AI"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/jayaraman2212066",
+    },
+    {
+      title: "Stealth Mode Watercraft",
+      description: "Implementation of power transmission system for upgraded watercraft powered by liquid nitrogen with YBCO superconductor components.",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19",
+      tags: ["Engineering", "Power Systems", "Superconductors", "Marine Technology"],
       liveUrl: "#",
       githubUrl: "#",
     },
@@ -54,7 +61,7 @@ const Projects = () => {
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              A showcase of my recent work and personal projects that demonstrate my skills and passion for development.
+              A showcase of my work spanning Machine Learning, Game Development, Computer Vision, and Engineering projects.
             </p>
           </div>
 

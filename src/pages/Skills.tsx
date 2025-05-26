@@ -7,21 +7,30 @@ import SkillOrb from '@/components/SkillOrb';
 
 const Skills = () => {
   const technicalSkills = [
-    { name: 'JavaScript', level: 95, color: 'from-yellow-400 to-yellow-600' },
-    { name: 'React', level: 90, color: 'from-blue-400 to-blue-600' },
-    { name: 'TypeScript', level: 85, color: 'from-blue-500 to-blue-700' },
-    { name: 'Node.js', level: 88, color: 'from-green-400 to-green-600' },
-    { name: 'Python', level: 82, color: 'from-blue-300 to-blue-500' },
-    { name: 'SQL', level: 80, color: 'from-purple-400 to-purple-600' },
+    { name: 'Python', level: 90, color: 'from-blue-400 to-blue-600' },
+    { name: 'JavaScript', level: 85, color: 'from-yellow-400 to-yellow-600' },
+    { name: 'HTML/CSS', level: 88, color: 'from-orange-400 to-red-500' },
+    { name: 'Machine Learning', level: 85, color: 'from-green-400 to-green-600' },
+    { name: 'Deep Learning', level: 82, color: 'from-purple-400 to-purple-600' },
+    { name: 'Flutter/Dart', level: 75, color: 'from-cyan-400 to-blue-500' },
   ];
 
   const frameworkSkills = [
-    { name: 'React', icon: '⚛️', level: 90 },
-    { name: 'Vue.js', icon: '💚', level: 75 },
-    { name: 'Express', icon: '🚀', level: 85 },
-    { name: 'Django', icon: '🐍', level: 70 },
-    { name: 'Next.js', icon: '▲', level: 80 },
-    { name: 'MongoDB', icon: '🍃', level: 78 },
+    { name: 'TensorFlow', icon: '🧠', level: 85 },
+    { name: 'PyTorch', icon: '🔥', level: 80 },
+    { name: 'OpenCV', icon: '👁️', level: 78 },
+    { name: 'Flutter', icon: '📱', level: 75 },
+    { name: 'Git/GitHub', icon: '🔧', level: 88 },
+    { name: 'VS Code', icon: '💻', level: 90 },
+  ];
+
+  const toolsAndTech = [
+    { name: 'YOLO', icon: '🎯', level: 82 },
+    { name: 'LIDAR', icon: '📡', level: 75 },
+    { name: 'AutoCAD', icon: '📐', level: 70 },
+    { name: 'Linux', icon: '🐧', level: 78 },
+    { name: 'Ubuntu', icon: '🟠', level: 80 },
+    { name: 'Google Cloud', icon: '☁️', level: 72 },
   ];
 
   return (
@@ -37,14 +46,14 @@ const Skills = () => {
             </h1>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              A comprehensive overview of my technical skills and proficiency levels.
+              My technical skills span across programming languages, ML frameworks, and development tools.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Technical Skills */}
+          <div className="grid lg:grid-cols-2 gap-12 mb-12">
+            {/* Programming Languages */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">Technical Skills</h2>
+              <h2 className="text-2xl font-bold text-white mb-8 text-center">Programming Languages</h2>
               <div className="space-y-6">
                 {technicalSkills.map((skill, index) => (
                   <SkillBar key={skill.name} skill={skill} index={index} />
@@ -52,9 +61,9 @@ const Skills = () => {
               </div>
             </div>
 
-            {/* Framework Skills */}
+            {/* Frameworks & Tools */}
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-8 text-center">Frameworks & Tools</h2>
+              <h2 className="text-2xl font-bold text-white mb-8 text-center">Frameworks & Developer Tools</h2>
               <div className="grid grid-cols-2 gap-6">
                 {frameworkSkills.map((skill, index) => (
                   <SkillOrb key={skill.name} skill={skill} index={index} />
@@ -63,30 +72,40 @@ const Skills = () => {
             </div>
           </div>
 
-          {/* Additional Skills */}
-          <div className="mt-12 bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h2 className="text-2xl font-bold text-white mb-8 text-center">Additional Expertise</h2>
+          {/* Technologies & Specializations */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 mb-12">
+            <h2 className="text-2xl font-bold text-white mb-8 text-center">Technologies & Platforms</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {toolsAndTech.map((skill, index) => (
+                <SkillOrb key={skill.name} skill={skill} index={index} />
+              ))}
+            </div>
+          </div>
+
+          {/* Specializations */}
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+            <h2 className="text-2xl font-bold text-white mb-8 text-center">Specializations</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🎨</span>
+                  <span className="text-2xl">🤖</span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">UI/UX Design</h3>
-                <p className="text-gray-300 text-sm">Creating intuitive and beautiful user interfaces</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Machine Learning</h3>
+                <p className="text-gray-300 text-sm">Deep Learning, Computer Vision, Time-series Analysis</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">☁️</span>
+                  <span className="text-2xl">🎮</span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">Cloud Services</h3>
-                <p className="text-gray-300 text-sm">AWS, Google Cloud, and Azure deployment</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Game Development</h3>
+                <p className="text-gray-300 text-sm">Reinforcement Learning, AI Agents, Game Logic</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">🔧</span>
+                  <span className="text-2xl">⚙️</span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">DevOps</h3>
-                <p className="text-gray-300 text-sm">CI/CD, Docker, and automation tools</p>
+                <h3 className="text-lg font-semibold text-white mb-2">Engineering</h3>
+                <p className="text-gray-300 text-sm">HVAC Systems, Chemical Plant Operations, Project Management</p>
               </div>
             </div>
           </div>
