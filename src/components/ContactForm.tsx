@@ -36,19 +36,19 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm flex flex-col items-center justify-center text-center animate-fade-in">
-        <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mb-4 animate-scale-in">
+      <div className="bg-white rounded-xl p-8 border border-[#BDC3C7]/30 shadow-sm flex flex-col items-center justify-center text-center animate-fade-in">
+        <div className="w-16 h-16 bg-[#76C7C0] rounded-full flex items-center justify-center mb-4 animate-scale-in">
           <CheckCircle className="w-8 h-8 text-white" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-800 mb-2">Message Sent Successfully!</h3>
-        <p className="text-slate-600">Thank you for reaching out. I'll get back to you soon!</p>
+        <h3 className="text-2xl font-bold text-[#2C3E50] mb-2">Message Sent Successfully!</h3>
+        <p className="text-[#2C3E50]/70">Thank you for reaching out. I'll get back to you soon!</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
-      <h2 className="text-2xl font-bold text-slate-800 mb-6">Send a Message</h2>
+    <div className="bg-white rounded-xl p-8 border border-[#BDC3C7]/30 shadow-sm">
+      <h2 className="text-2xl font-bold text-[#2C3E50] mb-6">Send a Message</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
@@ -59,7 +59,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
+              className="w-full bg-[#F7F9FB] border border-[#BDC3C7]/50 rounded-lg px-4 py-3 text-[#2C3E50] placeholder-[#BDC3C7] focus:border-[#76C7C0] focus:outline-none focus:ring-2 focus:ring-[#76C7C0]/20 transition-colors duration-300"
               placeholder="Your Name"
             />
           </div>
@@ -70,7 +70,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
+              className="w-full bg-[#F7F9FB] border border-[#BDC3C7]/50 rounded-lg px-4 py-3 text-[#2C3E50] placeholder-[#BDC3C7] focus:border-[#76C7C0] focus:outline-none focus:ring-2 focus:ring-[#76C7C0]/20 transition-colors duration-300"
               placeholder="Your Email"
             />
           </div>
@@ -83,7 +83,7 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
+            className="w-full bg-[#F7F9FB] border border-[#BDC3C7]/50 rounded-lg px-4 py-3 text-[#2C3E50] placeholder-[#BDC3C7] focus:border-[#76C7C0] focus:outline-none focus:ring-2 focus:ring-[#76C7C0]/20 transition-colors duration-300"
             placeholder="Subject"
           />
         </div>
@@ -95,7 +95,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300 resize-none"
+            className="w-full bg-[#F7F9FB] border border-[#BDC3C7]/50 rounded-lg px-4 py-3 text-[#2C3E50] placeholder-[#BDC3C7] focus:border-[#76C7C0] focus:outline-none focus:ring-2 focus:ring-[#76C7C0]/20 transition-colors duration-300 resize-none"
             placeholder="Your Message"
           />
         </div>
@@ -103,7 +103,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
+          className="w-full bg-[#76C7C0] hover:bg-[#FAD6C4] text-white hover:text-[#2C3E50] font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
         >
           {isSubmitting ? (
             <>
