@@ -36,19 +36,19 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex flex-col items-center justify-center text-center animate-fade-in">
-        <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4 animate-scale-in">
+      <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm flex flex-col items-center justify-center text-center animate-fade-in">
+        <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mb-4 animate-scale-in">
           <CheckCircle className="w-8 h-8 text-white" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-        <p className="text-gray-300">Thank you for reaching out. I'll get back to you soon!</p>
+        <h3 className="text-2xl font-bold text-slate-800 mb-2">Message Sent Successfully!</h3>
+        <p className="text-slate-600">Thank you for reaching out. I'll get back to you soon!</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-      <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
+    <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
+      <h2 className="text-2xl font-bold text-slate-800 mb-6">Send a Message</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
@@ -59,7 +59,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors duration-300"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
               placeholder="Your Name"
             />
           </div>
@@ -70,7 +70,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors duration-300"
+              className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
               placeholder="Your Email"
             />
           </div>
@@ -83,7 +83,7 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors duration-300"
+            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300"
             placeholder="Subject"
           />
         </div>
@@ -95,7 +95,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             rows={6}
-            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none transition-colors duration-300 resize-none"
+            className="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-slate-800 placeholder-slate-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-200 transition-colors duration-300 resize-none"
             placeholder="Your Message"
           />
         </div>
@@ -103,7 +103,7 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className="w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
         >
           {isSubmitting ? (
             <>

@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import ParticleBackground from '@/components/ParticleBackground';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
 
@@ -32,55 +31,54 @@ const Contact = () => {
       icon: Linkedin,
       label: 'LinkedIn',
       url: 'https://linkedin.com/in/jayaramankalidhasan',
-      color: 'hover:text-blue-400'
+      color: 'hover:text-teal-600'
     },
     {
       icon: Github,
       label: 'GitHub',
       url: 'https://github.com/jayaraman2212066',
-      color: 'hover:text-gray-400'
+      color: 'hover:text-slate-700'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      <ParticleBackground />
+    <div className="min-h-screen bg-gray-50 relative overflow-hidden">
       <Navigation />
       
       <main className="relative z-10 pt-24 pb-12">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-              Get In Touch
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6 animate-fade-in">
+              Let's Connect
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            <div className="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              I'm always open to discussing new opportunities, exciting projects, or collaborating on innovative solutions.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div className="space-y-8">
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
+                <h2 className="text-2xl font-bold text-slate-800 mb-6">Contact Information</h2>
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-center space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center">
                         <info.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <p className="text-gray-400 text-sm">{info.label}</p>
+                        <p className="text-slate-500 text-sm font-medium">{info.label}</p>
                         {info.link ? (
                           <a 
                             href={info.link}
-                            className="text-white hover:text-blue-400 transition-colors duration-300"
+                            className="text-slate-800 hover:text-teal-600 transition-colors duration-300 font-medium"
                           >
                             {info.value}
                           </a>
                         ) : (
-                          <p className="text-white">{info.value}</p>
+                          <p className="text-slate-800 font-medium">{info.value}</p>
                         )}
                       </div>
                     </div>
@@ -89,8 +87,8 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                <h2 className="text-2xl font-bold text-white mb-6">Connect With Me</h2>
+              <div className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm">
+                <h2 className="text-2xl font-bold text-slate-800 mb-6">Professional Profiles</h2>
                 <div className="flex space-x-6">
                   {socialLinks.map((social, index) => (
                     <a
@@ -98,7 +96,7 @@ const Contact = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white ${social.color} transition-all duration-300 hover:scale-110 hover:bg-white/20`}
+                      className={`w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-slate-600 ${social.color} transition-all duration-300 hover:scale-110 hover:shadow-md`}
                     >
                       <social.icon className="w-6 h-6" />
                     </a>
@@ -106,29 +104,28 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Quick Info */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                <h2 className="text-2xl font-bold text-white mb-6">Quick Info</h2>
+              {/* Availability */}
+              <div className="bg-gradient-to-r from-teal-50 to-orange-50 rounded-xl p-8 border border-teal-200">
+                <h2 className="text-2xl font-bold text-slate-800 mb-6">Availability</h2>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-gray-400 text-sm">Status</p>
-                    <p className="text-white">Open to opportunities</p>
+                    <p className="text-slate-600 text-sm font-medium">Current Status</p>
+                    <p className="text-slate-800 font-semibold">Open to opportunities</p>
                   </div>
                   <div>
-                    <p className="text-gray-400 text-sm">Response Time</p>
-                    <p className="text-white">Usually within 24 hours</p>
+                    <p className="text-slate-600 text-sm font-medium">Response Time</p>
+                    <p className="text-slate-800 font-semibold">Within 24 hours</p>
                   </div>
                   <div>
-                    <p className="text-gray-400 text-sm">Preferred Contact</p>
-                    <p className="text-white">Email or LinkedIn</p>
+                    <p className="text-slate-600 text-sm font-medium">Preferred Contact</p>
+                    <p className="text-slate-800 font-semibold">Email or LinkedIn</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
+            <div>
               <ContactForm />
             </div>
           </div>

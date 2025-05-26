@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Code, GraduationCap, Briefcase, Award, Target, Users, Lightbulb } from 'lucide-react';
+import { Code, GraduationCap, Briefcase, Award, Target, Users, Lightbulb, Download } from 'lucide-react';
 
 const About = () => {
   const achievements = [
@@ -29,16 +29,25 @@ const About = () => {
   ];
 
   return (
-    <section className="py-20 px-6 max-w-6xl mx-auto">
+    <section className="py-20 px-6 max-w-6xl mx-auto bg-white">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          About Me
+        <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+          Professional Summary
         </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-8"></div>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          A passionate and results-driven Information Technology professional with expertise in 
-          Machine Learning, Full-Stack Development, and Engineering Operations. Committed to 
-          leveraging technology to solve complex problems and drive innovation.
+        <div className="w-24 h-1 bg-teal-500 mx-auto mb-8"></div>
+        
+        {/* Resume Download Button */}
+        <div className="mb-8">
+          <button className="inline-flex items-center gap-3 bg-teal-500 hover:bg-teal-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <Download className="w-5 h-5" />
+            Download Resume
+          </button>
+        </div>
+        
+        <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+          Results-driven Information Technology professional with expertise in Machine Learning, 
+          Full-Stack Development, and Engineering Operations. Proven track record of delivering 
+          innovative solutions and leading cross-functional teams to achieve project objectives.
         </p>
       </div>
 
@@ -47,44 +56,44 @@ const About = () => {
         {achievements.map((achievement, index) => (
           <div 
             key={index}
-            className="text-center group hover:scale-105 transition-transform duration-300"
+            className="text-center group hover:scale-105 transition-transform duration-300 bg-gray-50 p-6 rounded-xl border border-gray-200"
           >
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+            <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-teal-200 transition-all duration-300">
               <achievement.icon className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-1">{achievement.label}</h3>
-            <p className="text-gray-400">{achievement.desc}</p>
+            <h3 className="text-2xl font-bold text-slate-800 mb-1">{achievement.label}</h3>
+            <p className="text-slate-600">{achievement.desc}</p>
           </div>
         ))}
       </div>
 
-      {/* Core Strengths */}
+      {/* Core Competencies */}
       <div className="mb-16">
-        <h3 className="text-3xl font-bold text-white text-center mb-8">Core Strengths</h3>
+        <h3 className="text-3xl font-bold text-slate-800 text-center mb-8">Core Competencies</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {strengths.map((strength, index) => (
             <div 
               key={index}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-300 text-center"
+              className="bg-white rounded-xl p-6 border border-gray-200 hover:border-teal-300 hover:shadow-lg transition-all duration-300 text-center"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <strength.icon className="w-6 h-6 text-white" />
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">{strength.title}</h4>
-              <p className="text-gray-300 leading-relaxed">{strength.description}</p>
+              <h4 className="text-xl font-bold text-slate-800 mb-3">{strength.title}</h4>
+              <p className="text-slate-600 leading-relaxed">{strength.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Professional Philosophy */}
-      <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-2xl p-8 border border-blue-500/30">
-        <h3 className="text-2xl font-bold text-white text-center mb-6">Professional Philosophy</h3>
-        <p className="text-gray-300 text-center leading-relaxed max-w-4xl mx-auto">
-          "I believe in the power of technology to transform industries and improve lives. 
-          My approach combines technical expertise with practical engineering experience, 
-          enabling me to bridge the gap between innovative concepts and real-world implementations. 
-          I'm passionate about continuous learning and staying at the forefront of technological advancement."
+      <div className="bg-gradient-to-r from-teal-50 to-orange-50 rounded-xl p-8 border border-teal-200">
+        <h3 className="text-2xl font-bold text-slate-800 text-center mb-6">Professional Philosophy</h3>
+        <p className="text-slate-700 text-center leading-relaxed max-w-4xl mx-auto">
+          "I believe in leveraging technology to drive meaningful business outcomes. My approach combines 
+          technical expertise with practical engineering experience, enabling me to deliver solutions that 
+          not only meet technical requirements but also create tangible value for organizations. I am 
+          committed to continuous learning and staying current with industry best practices."
         </p>
       </div>
     </section>
