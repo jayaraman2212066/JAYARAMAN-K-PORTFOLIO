@@ -93,6 +93,52 @@
       0% { transform: translateX(-100%); }
       100% { transform: translateX(100%); }
     }
+
+    .project-details {
+      margin: 15px 0;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+
+    .project-details ul {
+      list-style-type: none;
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+
+    .project-details ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 5px;
+    }
+
+    .project-details ul li:before {
+      content: "•";
+      color: #18d26e;
+      position: absolute;
+      left: 0;
+    }
+
+    .project-details p {
+      margin-bottom: 5px;
+    }
+
+    .project-details strong {
+      color: #18d26e;
+    }
+
+    .portfolio-info {
+      padding: 20px;
+    }
+
+    .portfolio-links {
+      margin-top: 15px;
+    }
+
+    .portfolio-links .btn {
+      margin-right: 10px;
+    }
   </style>
 
   <!-- =======================================================
@@ -464,7 +510,7 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
               <h5>Feb 2024 - Jun 2024</h5>
               <p><em>Python, JavaScript, HTML, CSS</em></p>
               <ul>
-                <li>Contributed to Github management, documentation, and binomial heap extraction.</li>
+                <li>Contributed to GitHub management, documentation, and binomial heap extraction.</li>
                 <li>Developed UI to enable interaction between different scenes.</li>
               </ul>
             </div><!-- End Resume Item -->
@@ -494,18 +540,18 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
               <h5>Jan 2025 - May 2025</h5>
               <p><em>Python, JavaScript, HTML, CSS, Flask</em></p>
               <ul>
-                <li>Github management, documentation,ML model creation, labelling of model images to train.</li>
+                <li>GitHub management, documentation, ML model creation, labelling of model images to train.</li>
                 <li>Developed UI to enable interaction between different scenes.</li>
                 <li>Developed a machine learning-based road anomaly detection system utilizing the YOLOv8 Nano model. The model was trained to identify road surface anomalies such as potholes and speed bumps using a computer vision dataset. Integrated the system with a Flask-based web application for real-time detection. Focused on optimizing detection performance and streamlining the future integration of real-time updates for improved accuracy and efficiency. The project demonstrates proficiency in machine learning, computer vision, and web development.</li>
               </ul>
             </div><!-- End Resume Item -->
 
             <div class="resume-item">
-              <h4>DQN-Snake game -project(reinforcement Learning)</h4>
+              <h4>DQN-Snake game -Project (reinforcement Learning)</h4>
               <h5>Jan 2025 - May 2025</h5>
-              <p><em>Flutter,Dart</em></p>
+              <p><em>Flutter, Dart</em></p>
               <ul>
-                <li>Snake Game with Reinforcement Learning - Flutter, Dart Developed a modular Snake Game in Flutter with both manual and AI gameplay modes. Integrated a Q-learning-based Reinforcement Learning agent to autonomously learn and play the game. Used simplified game state encoding and Q-table updates for real-time decision-making. Implemented persistent high scores and settings using shared_preferences.Pseudocodeisan't used, sound effects, andthemeswitchingforbetteruserexperience.</li>
+                <li>Snake Game with Reinforcement Learning — Flutter, Dart. Developed a modular Snake Game in Flutter with both manual and AI gameplay modes. Integrated a Q-learning-based Reinforcement Learning agent to autonomously learn and play the game. Used simplified game state encoding and Q-table updates for real-time decision-making. Implemented persistent high scores and settings using shared_preferences. Focused on clean UI, sound effects, and theme switching for better user experience.</li>
               </ul>
             </div><!-- End Resume Item -->
 
@@ -551,16 +597,14 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
                 </a>
                 <div class="portfolio-info">
                   <h4>Bridge Game Mini Project</h4>
-                  <p>Python, JavaScript, HTML, CSS</p>
-                  <p>
-                    <a href="https://bridge-card-game.onrender.com" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
-                  </p>
                   <div class="portfolio-links">
-                    <!-- Removed old preview and details links -->
+                    <a href="https://bridge-card-game.onrender.com" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
+                    <a href="https://github.com/jayaraman2212066/BRIDGE_CARD_GAME" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
                   </div>
+                  <p class="tech-stack">Python, JavaScript, HTML, CSS</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
               <div class="portfolio-content h-100">
@@ -569,18 +613,15 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
                 </a>
                 <div class="portfolio-info">
                   <h4>WASH WISH-(W2)</h4>
-                  <p>Python, Django, HTML, CSS, JavaScript</p>
-                  <p>
+                  <div class="portfolio-links">
                     <a href="https://washwish.web.app" target="_blank" class="btn btn-primary mt-2">Frontend Demo</a>
                     <a href="https://washwish.onrender.com" target="_blank" class="btn btn-success mt-2 ms-2">Backend Demo</a>
-                  </p>
-                  <div class="portfolio-links">
-                    <a href="https://washwish.onrender.com" target="_blank" title="Backend Demo" class="details-link" style="margin-left: 10px;"><i class="bi bi-server"></i></a>
-                    <!-- Removed old frontend link -->
+                    <a href="https://github.com/jayaraman2212066/WASHWISH" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
                   </div>
+                  <p class="tech-stack">Python, Django, HTML, CSS, JavaScript</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml">
               <div class="portfolio-content h-100">
@@ -589,30 +630,28 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
                 </a>
                 <div class="portfolio-info">
                   <h4>CO2 Emission Detection Using Deeplearning Project</h4>
-                  <p>Python, Deeplearning, CSS</p>
-                  <p>
-                    <a href="https://co2-emission-detection-auto-generator.onrender.com" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
-                  </p>
                   <div class="portfolio-links">
-                    <!-- Removed old preview and details links -->
+                    <a href="https://co2-emission-detection-auto-generator.onrender.com" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
+                    <a href="https://github.com/jayaraman2212066/CO2_EMISSION_DETECTION_AUTO_GENERATOR_LEVEL" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
                   </div>
+                  <p class="tech-stack">Python, JavaScript, HTML, CSS</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ai">
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/roadanomaly.png" class="img-fluid" alt="Road Anomaly Detection Project">
                 <div class="portfolio-info">
                   <h4>ComputerVision-Road Anomaly Detection</h4>
-                  <p>Python, JavaScript, HTML, CSS, Flask</p>
                   <div class="portfolio-links">
-                    <a href="assets/img/portfolio/roadanomaly.png" title="ComputerVision-Road Anomaly Detection" data-gallery="portfolio-gallery-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="portfolio-details.html?project=roadanomaly" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="https://computervision-road-anomaly-detection.onrender.com" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
+                    <a href="https://github.com/jayaraman2212066/COMPUTERVISION_ROAD_ANOMALY_DETECTION" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
                   </div>
+                  <p class="tech-stack">Python, JavaScript, HTML, CSS, Flask</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mobile">
               <div class="portfolio-content h-100">
@@ -621,16 +660,13 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
                 </a>
                 <div class="portfolio-info">
                   <h4>DQN-Snake game (Reinforcement Learning)</h4>
-                  <p>Flutter, Dart</p>
-                  <p>
-                    <a href="https://snakegame-46ec9.web.app" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
-                  </p>
                   <div class="portfolio-links">
-                    <!-- Removed old preview and details links -->
+                    <a href="https://snakegame-46ec9.web.app" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
                   </div>
+                  <p class="tech-stack">Flutter, Dart</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
 
           </div><!-- End Portfolio Container -->
 
