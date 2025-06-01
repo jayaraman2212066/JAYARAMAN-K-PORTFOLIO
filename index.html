@@ -33,6 +33,179 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Google Analytics with Enhanced Measurement -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      'page_title': 'JAYARAMAN.K PORTFOLIO',
+      'send_page_view': true,
+      'anonymize_ip': true,
+      'cookie_expires': 28 * 24 * 60 * 60, // 28 days
+      'debug_mode': false,
+      'user_properties': {
+        'device_type': window.innerWidth < 768 ? 'mobile' : 'desktop',
+        'browser': navigator.userAgent,
+        'language': navigator.language
+      }
+    });
+
+    // Function to send visitor notification email
+    function sendVisitorNotification(visitorData) {
+      const emailEndpoint = 'https://formsubmit.co/jayaraman2212066@gmail.com';
+      const subject = 'New Portfolio Visitor Alert!';
+      const message = `
+New Visitor Details:
+- Time: ${new Date().toLocaleString()}
+- Country: ${visitorData.country}
+- City: ${visitorData.city}
+- Region: ${visitorData.region}
+- Device: ${visitorData.device_type}
+- Browser: ${visitorData.browser}
+- Language: ${visitorData.language}
+- Referrer: ${document.referrer || 'Direct Visit'}
+- Page: ${window.location.href}
+      `;
+
+      fetch(emailEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: 'Portfolio Visitor Alert',
+          email: 'jayaraman2212066@gmail.com',
+          subject: subject,
+          message: message,
+          _template: 'table',
+          _autoresponse: 'Visitor notification sent successfully'
+        })
+      });
+    }
+
+    // Track time spent on page
+    let startTime = new Date();
+    window.addEventListener('beforeunload', function() {
+      let timeSpent = new Date() - startTime;
+      gtag('event', 'time_spent', {
+        'time_spent_seconds': Math.round(timeSpent / 1000)
+      });
+    });
+
+    // Track scroll depth
+    let maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      let scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+      if (scrollPercent > maxScroll) {
+        maxScroll = scrollPercent;
+        if (maxScroll % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+          gtag('event', 'scroll_depth', {
+            'scroll_percent': maxScroll
+          });
+        }
+      }
+    });
+  </script>
+
+  <!-- Counter.dev with Enhanced Tracking -->
+  <script src="https://cdn.counter.dev/script.js" data-id="YOUR-COUNTER-ID" data-utcoffset="1"></script>
+  <script>
+    // Track page views and send notification
+    window.addEventListener('load', function() {
+      // Get visitor's location using IP
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          const visitorData = {
+            country: data.country_name,
+            city: data.city,
+            region: data.region,
+            timezone: data.timezone,
+            device_type: window.innerWidth < 768 ? 'mobile' : 'desktop',
+            browser: navigator.userAgent,
+            language: navigator.language
+          };
+
+          // Send visitor notification
+          sendVisitorNotification(visitorData);
+
+          // Track in Google Analytics
+          gtag('event', 'visitor_info', visitorData);
+        });
+    });
+
+    // Track outbound links
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.hostname !== window.location.hostname) {
+        gtag('event', 'outbound_link', {
+          'link_url': e.target.href
+        });
+      }
+    });
+  </script>
+
+  <!-- FormSubmit.co for contact form -->
+  <script>
+    window.onload = function() {
+      const form = document.getElementById('contactForm');
+      form.setAttribute('action', 'https://formsubmit.co/jayaraman2212066@gmail.com');
+      form.setAttribute('method', 'POST');
+      
+      // Add honeypot to prevent spam
+      const honeypot = document.createElement('input');
+      honeypot.type = 'hidden';
+      honeypot.name = '_honey';
+      form.appendChild(honeypot);
+      
+      // Disable captcha
+      const captcha = document.createElement('input');
+      captcha.type = 'hidden';
+      captcha.name = '_captcha';
+      captcha.value = 'false';
+      form.appendChild(captcha);
+      
+      // Add success page
+      const success = document.createElement('input');
+      success.type = 'hidden';
+      success.name = '_next';
+      success.value = window.location.href + '?success=true';
+      form.appendChild(success);
+
+      // Add template
+      const template = document.createElement('input');
+      template.type = 'hidden';
+      template.name = '_template';
+      template.value = 'table';
+      form.appendChild(template);
+
+      // Add auto response
+      const autoresponse = document.createElement('input');
+      autoresponse.type = 'hidden';
+      autoresponse.name = '_autoresponse';
+      autoresponse.value = 'Thank you for contacting me! I will get back to you soon.';
+      form.appendChild(autoresponse);
+    }
+  </script>
+
+  <!-- Success Message Handler -->
+  <script>
+    // Check for success parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      const successMessage = document.querySelector('.sent-message');
+      if (successMessage) {
+        successMessage.style.display = 'block';
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 5000);
+      }
+    }
+  </script>
+
   <style>
     #particles-js {
       position: fixed;
@@ -307,9 +480,9 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="count-box">
-              <i class="bi bi-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Certifications</strong> earned</p>
+              <i class="bi bi-eye"></i>
+              <span id="visitor-count">0</span>
+              <p><strong>Portfolio Visitors</strong></p>
             </div>
           </div>
 
@@ -896,7 +1069,6 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
           <div class="col-lg-7">
             <form id="contactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
-
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
                   <input type="text" name="name" id="name-field" class="form-control" required>
@@ -921,13 +1093,11 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
-
                   <button type="submit">Send Message</button>
                 </div>
-
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
 
         </div>
 
@@ -936,6 +1106,61 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
     </section><!-- /Contact Section -->
 
   </main>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="contact section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Get in touch with me</p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bi bi-geo-alt"></i>
+            <h3>Location</h3>
+            <p>Chennai, Tamil Nadu, India</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="info-box mb-4">
+            <i class="bi bi-envelope"></i>
+            <h3>Email</h3>
+            <p>jayaraman2212066@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <form action="forms/contact.php" method="post" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer id="footer" class="footer position-relative light-background">
 
