@@ -307,4 +307,59 @@
     }
   }
 
+  // Background Image Rotation
+  const backgroundImages = [
+    'assets/img/portfolio_jay.jpg',
+    'assets/img/portfolio_jay1.jpg'
+  ];
+
+  let currentImageIndex = 0;
+
+  function rotateBackgroundImage() {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+      hero.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+    }
+  }
+
+  // Calculate and update age dynamically
+  function updateAge() {
+    const birthYear = 2003;
+    const birthMonth = 3; // March
+    const birthDay = 31;
+    
+    const today = new Date();
+    let age = today.getFullYear() - birthYear;
+    
+    // Check if birthday has occurred this year
+    const hasBirthdayOccurred = 
+      today.getMonth() > birthMonth - 1 || 
+      (today.getMonth() === birthMonth - 1 && today.getDate() >= birthDay);
+    
+    if (!hasBirthdayOccurred) {
+      age--;
+    }
+    
+    const ageElement = document.getElementById('dynamic-age');
+    if (ageElement) {
+      ageElement.textContent = age;
+    }
+  }
+
+  // Set up background rotation interval and update age
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initial setup
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.classList.add('background-transition');
+    }
+    
+    // Rotate background every 5 seconds
+    setInterval(rotateBackgroundImage, 5000);
+    
+    // Update age
+    updateAge();
+  });
+
 })();

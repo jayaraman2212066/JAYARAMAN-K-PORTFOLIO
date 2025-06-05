@@ -550,10 +550,11 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../img/portfolio_jay.jpg'); /* Set the background image */
-  background-size: cover; /* Cover the entire section */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  background-image: url('../img/portfolio_jay.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
 }
 
 .hero img {
@@ -1445,4 +1446,9 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
+}
+
+/* Add new styles for background transition */
+.hero.background-transition {
+  transition: background-image 1s ease-in-out;
 }
