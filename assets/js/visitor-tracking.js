@@ -51,7 +51,7 @@ async function trackVisitor() {
     };
 
     // Send data using FormSubmit.co
-    const response = await fetch('https://formsubmit.co/jayaraman2212066@ssn.edu.in', {
+    const response = await fetch('https://formsubmit.co/jayaraman2212066@gmail.com', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ async function trackVisitor() {
       },
       body: JSON.stringify({
         name: 'Portfolio Visitor Alert',
-        email: 'jayaraman2212066@ssn.edu.in',
+        email: 'jayaraman2212066@gmail.com',
         subject: 'New Portfolio Visitor Alert',
         message: `
 New Visitor Details:
