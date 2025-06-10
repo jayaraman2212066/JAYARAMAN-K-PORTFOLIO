@@ -206,8 +206,8 @@ h6 {
 }
 
 @media (min-width: 1200px) {
+
   .header~main,
-  .header~.main,
   .header~#footer {
     margin-left: 300px;
   }
