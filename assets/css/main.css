@@ -25,6 +25,7 @@
   --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --border-radius: 15px;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -155,6 +156,7 @@ h6 {
   overflow-y: auto;
   z-index: 997;
   border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: var(--border-radius);
 }
 
 .header .profile-img img {
@@ -533,6 +535,7 @@ section,
   background: var(--accent-color);
   left: 0;
   bottom: 0;
+  border-radius: var(--border-radius);
 }
 
 .section-title p {
@@ -555,6 +558,7 @@ section,
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 1s ease-in-out;
+  border-radius: var(--border-radius);
 }
 
 .hero img {
@@ -659,6 +663,7 @@ section,
 .stats .stats-item {
   padding: 30px;
   width: 100%;
+  border-radius: var(--border-radius);
 }
 
 .stats .stats-item i {
@@ -693,7 +698,7 @@ section,
   height: 60px;
   display: block;
   background: none;
-  border-radius: 0;
+  border-radius: var(--border-radius);
 }
 
 .skills .progress .skill {
@@ -721,6 +726,7 @@ section,
   height: 10px;
   transition: 0.9s;
   background-color: var(--accent-color);
+  border-radius: var(--border-radius);
 }
 
 /*--------------------------------------------------------------
@@ -739,6 +745,8 @@ section,
   margin-top: -2px;
   border-left: 2px solid var(--accent-color);
   position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
 .resume .resume-item h4 {
@@ -803,6 +811,7 @@ section,
   text-transform: uppercase;
   margin-bottom: 10px;
   transition: all 0.3s ease-in-out;
+  border-radius: var(--border-radius);
 }
 
 .portfolio .portfolio-filters li:hover,
@@ -915,7 +924,7 @@ section,
   justify-content: center;
   width: 54px;
   height: 54px;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   transition: 0.5s;
   border: 1px solid var(--accent-color);
   margin-right: 20px;
@@ -966,11 +975,12 @@ section,
   box-sizing: content-box;
   text-align: center;
   min-height: 320px;
+  border-radius: var(--border-radius);
 }
 
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   margin: 0 auto;
 }
 
@@ -1014,7 +1024,7 @@ section,
   background-color: var(--surface-color);
   position: relative;
   margin-bottom: 35px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -1079,7 +1089,7 @@ section,
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50px;
+  border-radius: var(--border-radius);
   transition: all 0.3s ease-in-out;
   margin-right: 15px;
 }
@@ -1121,7 +1131,7 @@ section,
   font-size: 14px;
   padding: 10px 15px;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: var(--border-radius);
   color: var(--default-color);
   background-color: var(--surface-color);
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
@@ -1145,7 +1155,7 @@ section,
   border: 0;
   padding: 10px 30px;
   transition: 0.4s;
-  border-radius: 50px;
+  border-radius: var(--border-radius);
 }
 
 .contact .php-email-form button[type=submit]:hover {
@@ -1163,6 +1173,7 @@ section,
 
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
+  border-radius: var(--border-radius);
 }
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
@@ -1231,6 +1242,7 @@ section,
   padding: 10px 30px;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   margin-bottom: 20px;
+  border-radius: var(--border-radius);
 }
 
 .service-details .services-list a {
@@ -1255,6 +1267,7 @@ section,
 
 .service-details .services-img {
   margin-bottom: 20px;
+  border-radius: var(--border-radius);
 }
 
 .service-details h3 {
