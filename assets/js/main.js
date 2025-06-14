@@ -362,4 +362,38 @@
     updateAge();
   });
 
+  /**
+   * Dark/Light Mode Toggle
+   */
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const body = document.body;
+  const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+
+  function setTheme(mode) {
+    if (mode === 'dark') {
+      body.classList.add('dark-mode');
+      if (themeIcon) {
+        themeIcon.classList.remove('bi-moon');
+        themeIcon.classList.add('bi-sun');
+      }
+    } else {
+      body.classList.remove('dark-mode');
+      if (themeIcon) {
+        themeIcon.classList.remove('bi-sun');
+        themeIcon.classList.add('bi-moon');
+      }
+    }
+    localStorage.setItem('theme', mode);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function() {
+      const isDark = body.classList.contains('dark-mode');
+      setTheme(isDark ? 'light' : 'dark');
+    });
+    // On load, set theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) setTheme(savedTheme);
+  }
+
 })();
