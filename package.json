@@ -2,9 +2,9 @@
   "name": "jayaraman-k-portfolio",
   "version": "1.0.0",
   "description": "Portfolio website for Jayaraman K",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "start": "npx serve"
+    "start": "node server.js"
   },
   "dependencies": {
     "serve": "^14.2.1"
