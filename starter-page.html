@@ -59,6 +59,12 @@
       <a href="https://linkedin.com/in/yourusername" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
+    <div class="sidebar-actions text-center" style="margin: 18px 0;">
+      <button id="theme-toggle" class="btn btn-outline-secondary" style="width: 80%; border-radius: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px;">
+        <i class="bi bi-moon"></i> <span>Dark/Light Mode</span>
+      </button>
+    </div>
+
     <nav id="navmenu" class="navmenu">
       <ul>
         <li><a href="#hero"><i class="bi bi-house navicon"></i>Home</a></li>
@@ -153,6 +159,39 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        body.classList.add('dark-mode');
+        if (themeIcon) {
+          themeIcon.classList.remove('bi-moon');
+          themeIcon.classList.add('bi-sun');
+        }
+      } else {
+        body.classList.remove('dark-mode');
+        if (themeIcon) {
+          themeIcon.classList.remove('bi-sun');
+          themeIcon.classList.add('bi-moon');
+        }
+      }
+      localStorage.setItem('theme', mode);
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        const isDark = body.classList.contains('dark-mode');
+        setTheme(isDark ? 'light' : 'dark');
+      });
+      // On load, set theme from localStorage
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) setTheme(savedTheme);
+    }
+  </script>
 
 </body>
 

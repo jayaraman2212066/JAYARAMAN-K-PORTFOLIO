@@ -25,7 +25,7 @@
   --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-  --border-radius: 15px;
+  --border-radius: 24px;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -1467,10 +1467,36 @@ body {
 }
 
 /* --- Dark Mode Styles --- */
-body.dark-mode {
+body.dark-mode,
+body.dark-mode .main,
+body.dark-mode .section,
+body.dark-mode .card,
+body.dark-mode .portfolio-item,
+body.dark-mode .portfolio .portfolio-content,
+body.dark-mode .portfolio .portfolio-content .portfolio-info,
+body.dark-mode .resume .resume-item,
+body.dark-mode .services .service-item,
+body.dark-mode .testimonials .testimonial-item,
+body.dark-mode .contact .info-wrap,
+body.dark-mode .contact .php-email-form,
+body.dark-mode .stats .stats-item {
   background: #181c24 !important;
   color: #e2e8f0 !important;
 }
+
+body.dark-mode .card,
+body.dark-mode .portfolio-item,
+body.dark-mode .portfolio .portfolio-content,
+body.dark-mode .portfolio .portfolio-content .portfolio-info,
+body.dark-mode .resume .resume-item,
+body.dark-mode .services .service-item,
+body.dark-mode .testimonials .testimonial-item,
+body.dark-mode .contact .info-wrap,
+body.dark-mode .contact .php-email-form,
+body.dark-mode .stats .stats-item {
+  box-shadow: 0 6px 32px rgba(20, 157, 221, 0.12), 0 2px 8px rgba(20, 157, 221, 0.08);
+}
+
 body.dark-mode .header,
 body.dark-mode .footer,
 body.dark-mode .portfolio-details .portfolio-details-slider,
@@ -1516,4 +1542,61 @@ body.dark-mode .sidebar-actions .btn:hover {
   background: #149ddd;
   color: #fff;
   border-color: #149ddd;
+}
+
+.card,
+.portfolio-item,
+.portfolio .portfolio-content,
+.portfolio .portfolio-content img,
+.portfolio .portfolio-content .portfolio-info,
+.portfolio-details .portfolio-details-slider img,
+.portfolio-details .portfolio-info,
+.portfolio-details .portfolio-description,
+.section,
+.resume .resume-item,
+.services .service-item,
+.testimonials .testimonial-item,
+.contact .info-wrap,
+.contact .php-email-form,
+.stats .stats-item {
+  border-radius: var(--border-radius) !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .section-title h2,
+body.dark-mode .section-title,
+body.dark-mode .portfolio-info h4,
+body.dark-mode .portfolio .portfolio-content .portfolio-info,
+body.dark-mode .portfolio-details .portfolio-info h3,
+body.dark-mode .portfolio-details .portfolio-description h2 {
+  color: #fff !important;
+}
+
+body.dark-mode .section-title h2:after {
+  background: #18d26e !important;
+}
+
+body.dark-mode .portfolio .portfolio-content .portfolio-info,
+body.dark-mode .portfolio-details .portfolio-info,
+body.dark-mode .portfolio-details .portfolio-description {
+  background: rgba(30, 34, 40, 0.98) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 32px rgba(20, 157, 221, 0.18), 0 2px 8px rgba(20, 157, 221, 0.10);
+}
+
+body.dark-mode .hero {
+  background-image: url('../img/portfolio_jay.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: transparent !important;
+}
+
+body.dark-mode .hero:before {
+  background: rgba(24, 28, 36, 0.7) !important;
 }
