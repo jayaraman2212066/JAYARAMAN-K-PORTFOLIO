@@ -47,10 +47,43 @@ async function trackVisitor() {
       ip: locationInfo.ip,
       location: `${locationInfo.city}, ${locationInfo.region}, ${locationInfo.country}`,
       screenResolution: browserInfo.screenResolution,
-      timezone: browserInfo.timezone
+      timezone: browserInfo.timezone,
+      userAgent: browserInfo.userAgent,
+      language: browserInfo.language,
+      referrer: document.referrer || 'Direct Visit',
+      pageUrl: window.location.href,
+      sessionId: generateSessionId()
     };
 
-    // Send data using FormSubmit.co
+    // Send data using FormSubmit.co with enhanced formatting
+    const emailContent = `
+🔔 NEW PORTFOLIO VISITOR ALERT 🔔
+=====================================
+
+📅 VISIT TIME: ${new Date(visitorData.timestamp).toLocaleString()}
+🌐 PAGE URL: ${visitorData.pageUrl}
+🔗 REFERRER: ${visitorData.referrer}
+
+📍 LOCATION DETAILS:
+   • IP Address: ${visitorData.ip}
+   • City: ${locationInfo.city || 'Unknown'}
+   • Region: ${locationInfo.region || 'Unknown'}
+   • Country: ${locationInfo.country || 'Unknown'}
+
+💻 DEVICE & BROWSER INFO:
+   • Browser: ${visitorData.browser}
+   • Platform: ${visitorData.device}
+   • Screen Resolution: ${visitorData.screenResolution}
+   • Language: ${visitorData.language}
+   • Timezone: ${visitorData.timezone}
+   • User Agent: ${visitorData.userAgent}
+
+🆔 SESSION ID: ${visitorData.sessionId}
+
+=====================================
+This is an automated notification from your portfolio website.
+    `;
+
     const response = await fetch('https://formsubmit.co/jayaraman2212066@ssn.edu.in', {
       method: 'POST',
       headers: {
@@ -58,28 +91,45 @@ async function trackVisitor() {
         'Accept': 'application/json'
       },
       body: JSON.stringify({
-        name: 'Portfolio Visitor Alert',
+        name: 'Portfolio Visitor Alert System',
         email: 'jayaraman2212066@ssn.edu.in',
-        subject: 'New Portfolio Visitor Alert',
-        message: `
-New Visitor Details:
-- Time: ${new Date(visitorData.timestamp).toLocaleString()}
-- IP: ${visitorData.ip}
-- Location: ${visitorData.location}
-- Browser: ${visitorData.browser}
-- Device: ${visitorData.device}
-- Screen Resolution: ${visitorData.screenResolution}
-- Timezone: ${visitorData.timezone}
-- Referrer: ${document.referrer || 'Direct Visit'}
-- Page: ${window.location.href}
-        `,
+        subject: `🔔 New Portfolio Visitor - ${locationInfo.country || 'Unknown Location'}`,
+        message: emailContent,
         _template: 'table',
-        _autoresponse: 'Visitor notification sent successfully'
+        _autoresponse: 'Visitor notification sent successfully',
+        _captcha: 'false',
+        _next: window.location.href
       })
     });
 
     if (!response.ok) {
       throw new Error('Failed to track visitor');
+    }
+
+    console.log('Visitor tracked successfully:', visitorData);
+
+    // Also send to server endpoint as backup
+    try {
+      await fetch('/log', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          timestamp: visitorData.timestamp,
+          userAgent: visitorData.userAgent,
+          pageURL: visitorData.pageUrl,
+          language: visitorData.language,
+          screenSize: visitorData.screenResolution,
+          referrer: visitorData.referrer,
+          cookies: navigator.cookieEnabled,
+          timezone: visitorData.timezone,
+          platform: visitorData.device,
+          doNotTrack: navigator.doNotTrack
+        })
+      });
+    } catch (serverError) {
+      console.log('Server tracking failed, but FormSubmit worked:', serverError);
     }
 
     // Update visitor count in the UI
@@ -88,10 +138,108 @@ New Visitor Details:
       const currentCount = parseInt(visitorCountElement.textContent) || 0;
       visitorCountElement.textContent = currentCount + 1;
     }
+
+    // Store visitor data in localStorage to prevent duplicate tracking
+    const visitorKey = `visitor_${visitorData.sessionId}`;
+    localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+    
   } catch (error) {
     console.error('Error tracking visitor:', error);
+    // Fallback: try to send basic visitor info
+    try {
+      await fetch('https://formsubmit.co/jayaraman2212066@ssn.edu.in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: 'Portfolio Visitor Alert (Fallback)',
+          email: 'jayaraman2212066@ssn.edu.in',
+          subject: 'New Portfolio Visitor - Basic Info',
+          message: `New visitor at ${new Date().toLocaleString()} from ${window.location.href}`,
+          _template: 'table',
+          _autoresponse: 'Visitor notification sent successfully'
+        })
+      });
+    } catch (fallbackError) {
+      console.error('Fallback tracking also failed:', fallbackError);
+    }
   }
 }
 
-// Track visitor when page loads
-document.addEventListener('DOMContentLoaded', trackVisitor); 
+// Generate unique session ID
+function generateSessionId() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+// Check if visitor has already been tracked in this session
+function hasBeenTracked() {
+  const sessionKey = 'portfolio_visitor_tracked';
+  return sessionStorage.getItem(sessionKey) === 'true';
+}
+
+// Mark visitor as tracked for this session
+function markAsTracked() {
+  const sessionKey = 'portfolio_visitor_tracked';
+  sessionStorage.setItem(sessionKey, 'true');
+}
+
+// Track visitor when page loads (only once per session)
+document.addEventListener('DOMContentLoaded', function() {
+  if (!hasBeenTracked()) {
+    trackVisitor();
+    markAsTracked();
+  }
+});
+
+// Track page views and time spent
+let pageStartTime = Date.now();
+let isPageVisible = true;
+
+// Track when user leaves the page
+window.addEventListener('beforeunload', function() {
+  const timeSpent = Math.round((Date.now() - pageStartTime) / 1000);
+  if (timeSpent > 5) { // Only track if user spent more than 5 seconds
+    sendPageExitData(timeSpent);
+  }
+});
+
+// Track page visibility changes
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    isPageVisible = false;
+  } else {
+    isPageVisible = true;
+    pageStartTime = Date.now();
+  }
+});
+
+// Send page exit data
+async function sendPageExitData(timeSpent) {
+  try {
+    await fetch('https://formsubmit.co/jayaraman2212066@ssn.edu.in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: 'Portfolio Page Exit Alert',
+        email: 'jayaraman2212066@ssn.edu.in',
+        subject: 'Portfolio Visitor Page Exit',
+        message: `
+📊 PAGE EXIT DATA
+================
+⏱️ Time Spent: ${timeSpent} seconds
+🌐 Page: ${window.location.href}
+📅 Exit Time: ${new Date().toLocaleString()}
+        `,
+        _template: 'table',
+        _autoresponse: 'Page exit data recorded'
+      })
+    });
+  } catch (error) {
+    console.error('Error sending page exit data:', error);
+  }
+} 

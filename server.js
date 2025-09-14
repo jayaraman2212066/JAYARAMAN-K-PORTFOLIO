@@ -11,6 +11,15 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Email transporter configuration
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
+  }
+});
+
 // Serve static files (frontend)
 app.use(express.static(path.join(__dirname, '/')));
 

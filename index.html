@@ -54,19 +54,29 @@
 
     // Function to send visitor notification email
     function sendVisitorNotification(visitorData) {
-      const emailEndpoint = 'https://formsubmit.co/jayaraman2212066@gmail.com';
-      const subject = 'New Portfolio Visitor Alert!';
+      const emailEndpoint = 'https://formsubmit.co/jayaraman2212066@ssn.edu.in';
+      const subject = `🔔 New Portfolio Visitor - ${visitorData.country || 'Unknown Location'}`;
       const message = `
-New Visitor Details:
-- Time: ${new Date().toLocaleString()}
-- Country: ${visitorData.country}
-- City: ${visitorData.city}
-- Region: ${visitorData.region}
-- Device: ${visitorData.device_type}
-- Browser: ${visitorData.browser}
-- Language: ${visitorData.language}
-- Referrer: ${document.referrer || 'Direct Visit'}
-- Page: ${window.location.href}
+🔔 NEW PORTFOLIO VISITOR ALERT 🔔
+=====================================
+
+📅 VISIT TIME: ${new Date().toLocaleString()}
+🌐 PAGE URL: ${window.location.href}
+🔗 REFERRER: ${document.referrer || 'Direct Visit'}
+
+📍 LOCATION DETAILS:
+   • Country: ${visitorData.country || 'Unknown'}
+   • City: ${visitorData.city || 'Unknown'}
+   • Region: ${visitorData.region || 'Unknown'}
+   • Timezone: ${visitorData.timezone || 'Unknown'}
+
+💻 DEVICE & BROWSER INFO:
+   • Device Type: ${visitorData.device_type || 'Unknown'}
+   • Browser: ${visitorData.browser || 'Unknown'}
+   • Language: ${visitorData.language || 'Unknown'}
+
+=====================================
+This is an automated notification from your portfolio website.
       `;
 
       fetch(emailEndpoint, {
@@ -76,13 +86,16 @@ New Visitor Details:
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          name: 'Portfolio Visitor Alert',
-          email: 'jayaraman2212066@gmail.com',
+          name: 'Portfolio Visitor Alert System',
+          email: 'jayaraman2212066@ssn.edu.in',
           subject: subject,
           message: message,
           _template: 'table',
-          _autoresponse: 'Visitor notification sent successfully'
+          _autoresponse: 'Visitor notification sent successfully',
+          _captcha: 'false'
         })
+      }).catch(error => {
+        console.error('Error sending visitor notification:', error);
       });
     }
 
@@ -151,7 +164,7 @@ New Visitor Details:
   <script>
     window.onload = function() {
       const form = document.getElementById('contactForm');
-      form.setAttribute('action', 'https://formsubmit.co/jayaraman2212066@gmail.com');
+      form.setAttribute('action', 'https://formsubmit.co/jayaraman2212066@ssn.edu.in');
       form.setAttribute('method', 'POST');
       
       // Add honeypot to prevent spam
@@ -349,7 +362,7 @@ New Visitor Details:
     </div>
     <!-- Added Download Resume and Theme Toggle -->
     <div class="sidebar-actions text-center" style="margin: 18px 0;">
-      <a href="assets/3122225002305_JayaramanK.pdf" class="btn btn-primary" download style="margin-bottom: 10px; width: 80%; border-radius: 12px; font-weight: 600;">Download Resume</a>
+      <a href="assets/jayaraman_K_3122225002305.pdf" class="btn btn-primary" download style="margin-bottom: 10px; width: 80%; border-radius: 12px; font-weight: 600;">Download Resume</a>
       <button id="theme-toggle" class="btn btn-outline-secondary" style="width: 80%; border-radius: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px;">
         <i class="bi bi-moon"></i> <span>Dark/Light Mode</span>
       </button>
@@ -360,6 +373,7 @@ New Visitor Details:
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#competitions"><i class="bi bi-trophy navicon"></i> Competitions</a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -392,7 +406,7 @@ New Visitor Details:
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <h2>Jayaraman K</h2>
-        <p>I'm <span class="typed" data-typed-items="Junior Engineer, Web Developer, Diploma Mechanical Engineer">Junior Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        <p>I'm <span class="typed" data-typed-items="Software Developer, Web Developer, Full Stack Developer">Software Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
       </div>
 
     </section><!-- /Hero Section -->
@@ -403,8 +417,8 @@ New Visitor Details:
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <p>I'm a <b>cross-disciplinary thinker</b> and builder, shaped by both gears and code.
-My journey began with a Diploma in Mechanical Engineering—drawn to machines, mechanics, and the elegance of physical systems. But something deeper stirred within me—what I now recognize as <b>cryptomnesia</b>: a subconscious influence, perhaps sparked by countless hours watching <b>Tony Stark (Iron Man)</b> bring ideas to life through a perfect synergy of <b>hardware and software</b>.</p>
+        <p>I'm a <b>passionate software developer</b> and problem solver, driven by innovation and technology.
+My journey began with a fascination for technology and the endless possibilities it offers. What I now recognize as <b>inspiration</b>: a deep influence, perhaps sparked by countless hours watching <b>innovators like Tony Stark (Iron Man)</b> bring ideas to life through the perfect synergy of <b>creativity and technology</b>.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -436,17 +450,17 @@ My journey began with a Diploma in Mechanical Engineering—drawn to machines, m
               </div>
             </div>
 
-            <h3><b>WHY I CHOOSE CROSS MAJOR ?</b></h3>
-            <p>Why I Chose a Cross-Major Path
-Choosing Mechanical Engineering was my way of understanding the physical world—its logic, movement, and mechanics. But as I progressed, I realized that many of today's innovations come not just from machines, but from the intelligence that controls them. I saw that to truly build like the innovators I admired, I needed to understand both hardware and software.</p>
+            <h3><b>WHY I CHOOSE SOFTWARE DEVELOPMENT ?</b></h3>
+            <p>Why I Chose Software Development
+I was drawn to software development because of its limitless potential to solve real-world problems and create innovative solutions. Technology has the power to transform ideas into reality, and I wanted to be part of that transformation.</p>
 
-            <p>That realization led me to pursue a B.Tech in Information Technology. It wasn't a shift—it was an <b>evolution</b>. I wanted to merge the physical discipline of mechanical systems with the digital power of computing. I saw IT not as a departure, but as an expansion—a way to bring <b>automation, intelligence, and creativity</b> into the mechanical foundation I had already built.</p>
+            <p>My journey led me to pursue a B.Tech in Information Technology. It was a natural <b>evolution</b> driven by my passion for technology and problem-solving. I saw software development not just as a career, but as a way to bring <b>automation, intelligence, and creativity</b> to solve complex challenges.</p>
 
             <p>What I Bring Today
-Now, I combine the analytical precision of mechanical engineering with the problem-solving agility of IT. Whether it's creating smart systems, automating real-world processes, or bridging the gap between machines and intelligence, I operate at the intersection of disciplines.</p>
+Now, I combine analytical thinking with creative problem-solving to build innovative software solutions. Through my academic projects and personal development, I've gained hands-on experience creating web applications, implementing machine learning models, and developing mobile apps, always focusing on delivering high-quality, user-centered solutions.</p>
 
-            <p>Much like Iron Man, I believe technology isn't just a tool—it's imagination, engineered.
-My academic path is a reflection of that mindset: driven by curiosity, guided by logic, and influenced by subconscious sparks from the stories and innovations that inspired me.</p>
+            <p>Much like the innovators I admire, I believe technology isn't just a tool—it's imagination, engineered.
+My path is driven by curiosity, guided by logic, and inspired by the endless possibilities that technology offers.</p>
           </div>
         </div>
 
@@ -464,23 +478,23 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Projects</strong> completed</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="count-box">
-              <i class="bi bi-clock"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Years of experience in mech oriented construction work as junior engineer</strong></p>
+              <i class="bi bi-trophy"></i>
+              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
+              <p><strong>Competitions</strong> won</p>
             </div>
           </div>
 
           <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
             <div class="count-box">
               <i class="bi bi-tools"></i>
-              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
               <p><strong>Skills</strong> mastered</p>
             </div>
           </div>
@@ -515,23 +529,16 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>Python</span> <i class="val">90%</i></span>
+              <span class="skill"><span>Python</span> <i class="val">95%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>C</span> <i class="val">80%</i></span>
+              <span class="skill"><span>SQL</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
@@ -543,14 +550,21 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>VS Code</span> <i class="val">90%</i></span>
+              <span class="skill"><span>JavaScript</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>Google Cloud</span> <i class="val">70%</i></span>
+              <span class="skill"><span>C</span> <i class="val">80%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Ruby</span> <i class="val">70%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
@@ -561,44 +575,44 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>Linux/Ubuntu</span> <i class="val">85%</i></span>
+              <span class="skill"><span>Flutter</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>Github</span> <i class="val">90%</i></span>
+              <span class="skill"><span>Dart</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>Django</span> <i class="val">80%</i></span>
+              <span class="skill"><span>Google Cloud</span> <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>Flutter/Dart</span> <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Flask</span> <i class="val">75%</i></span>
+              <span class="skill"><span>Kali Linux</span> <i class="val">75%</i></span>
               <div class="progress-bar-wrap">
                 <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
-              <span class="skill"><span>AutoCAD</span> <i class="val">80%</i></span>
+              <span class="skill"><span>Ubuntu</span> <i class="val">85%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div><!-- End Skills Item -->
+
+            <div class="progress">
+              <span class="skill"><span>Git/GitHub</span> <i class="val">90%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
@@ -628,7 +642,7 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
 
             <div class="resume-item pb-0">
               <h4>Jayaraman K</h4>
-              <p><em>Versatile and technically adept Information Technology student with a strong foundation in software development, machine learning, and backend engineering. Proficient in Python, JavaScript, Django, and Flutter, with experience building scalable applications and implementing intelligent systems for real-time processing and automation. Combines a background in mechanical engineering with hands-on development across multiple domains, demonstrating adaptability, problem-solving abilities, and a commitment to continuous learning and innovation in the tech field.</em></p>
+              <p><em>Versatile and technically adept Information Technology student with a strong foundation in software development, machine learning, and backend engineering. Proficient in Python, JavaScript, Django, and Flutter, with hands-on experience building scalable applications and implementing intelligent systems for real-time processing and automation. Demonstrates adaptability, problem-solving abilities, and a commitment to continuous learning and innovation in the tech field.</em></p>
               <ul>
                 <li>Chennai, India</li>
                 <li>+91-6369804386</li>
@@ -640,54 +654,69 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
             <div class="resume-item">
               <h4>B.Tech in Information Technology</h4>
               <h5>Sep 2023 - Jul 2026</h5>
-              <p><em>SSN College of Engineering, Chennai, India</em></p>
-              <p>CGPA: 7.5</p>
+              <p><em>Sri Sivasubramaniya Nadar College of Engineering, Chennai, India</em></p>
+              <p>CGPA: 7.209/10</p>
             </div><!-- End Resume Item -->
 
             <div class="resume-item">
-              <h4>Diploma in Mechanical Engineering</h4>
-              <h5>2019 - May 2022</h5>
-              <p><em>Valivalam Desikar Polytechnic College, Nagapattinam, India</em></p>
-              <p>CGPA: 96%</p>
+              <h4>Diploma in Engineering</h4>
+              <h5>2019 - 2022</h5>
+              <p><em>Valivalam Desikar Polytechnic College, Nagai, India</em></p>
+              <p>Percentage: 96%</p>
             </div><!-- End Resume Item -->
 
-            <h3 class="resume-title">Achievements</h3>
+            <div class="resume-item">
+              <h4>Class X (SSLC)</h4>
+              <h5>2016 - 2017</h5>
+              <p><em>St Sebastian's High School, Nagai, India</em></p>
+              <p>Percentage: 94%</p>
+            </div><!-- End Resume Item -->
+
+            <h3 class="resume-title">Experience</h3>
+            <div class="resume-item">
+              <h4>IT Support Junior Engineer - BMS Automation Test</h4>
+              <h5>Jul 2025 - Present</h5>
+              <p><em>TATA Group - Voltas Limited, Tynampet, Chennai</em></p>
+              <ul>
+                <li>Analyzed BMS communication protocols (Modbus, BACnet) and studied peer-to-peer IP communication within automation systems.</li>
+                <li>Developed a web-based automation tool to monitor and control panel activities, enhancing operational efficiency.</li>
+                <li>Improved real-time equipment tracking and reduced manual work.</li>
+                <li>Gained insights into Voltas's corporate culture, focusing on innovation, sustainability, and smart automation practices.</li>
+                <li>Strengthened skills in networking, web development, and industrial system integration.</li>
+              </ul>
+            </div><!-- End Resume Item -->
+
+            <h3 class="resume-title">Achievements & Certifications</h3>
             <div class="resume-item">
               <ul>
-                <li>College first award and certification - Polytechnic 2019-2022 Batch</li>
-                <li>Scouts Captain in 2017</li>
-                <li>own acheivement - Fitness Influence in offline</li>
+                <li>College First Award and Certification - DOTE, Valivalam Desikar Polytechnic College (Sep 2022)</li>
+                <li>Mathematics State First Certification - Valivalam Desikar Polytechnic College (Sep 2022)</li>
+                <li>Scout Captain - St Sebastian High School (Jan 2014)</li>
+                <li>3D Printing Programming and Design Course - Mahindra Company (Jan 2022)</li>
+                <li>Merit Cum Means Scholarship - SSN College of Engineering (Sep 2024)</li>
               </ul>
             </div><!-- End Resume Item -->
 
           </div>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Project Junior Engineer (Mechanical)</h4>
-              <h5>Jun 2022 - Dec 2022</h5>
-              <p><em>Hi Trans Service Pvt. Ltd., Hosur, India</em></p>
-              <ul>
-                <li>Supervisor for workers (like welders, fitters, plumber, helpers etc..) in HVAC work for Tata Electronics Pvt. Ltd., leveraging mechanical knowledge gained from diploma, including duct erection and reporting, team work with employee and workers.</li>
-                <li>Created tax invoices and handled communication with Tata employees regarding daily targets.</li>
-              </ul>
-            </div><!-- End Resume Item -->
-
-            <div class="resume-item">
-              <h4>Junior Engineer (Mechanical)</h4>
-              <h5>Jan 2023 - Jul 2023</h5>
-              <p><em>Sanmar Chemplast Pvt. Ltd., Mettur, India</em></p>
-              <ul>
-                <li>Applied mechanical engineering principles to learn chemical plant safety and operations, performed pump maintenance, and prepared daily reports.</li>
-                <li>Created tax invoices and handled communication with Tata employees regarding daily targets.correct communication with higher officials.</li>
-              </ul>
-            </div><!-- End Resume Item -->
 
             <h3 class="resume-title">Projects</h3>
             <div class="resume-item">
+                <h4>Mersenne Prime Discovery System</h4>
+                <h5>Mar 2025 - Present</h5>
+                <p><em>Python, Flask, HTML/CSS</em></p>
+                <ul>
+                  <li>Advanced system to discover Mersenne primes by combining Lucas-Lehmer testing with pattern-based range prediction.</li>
+                  <li>Features quick-start search, visual analysis, and real-time monitoring with multi-threaded processing.</li>
+                  <li>Includes FFT and AVX2/AVX-512 optimizations, early termination, batch processing, and configurable search ranges.</li>
+                  <li>Target search ranges emphasized near 85M-90M exponents with performance monitoring tools.</li>
+                </ul>
+            </div><!-- End Resume Item -->
+
+            <div class="resume-item">
               <h4>Bridge Game Mini Project</h4>
-              <h5>Feb 2024 - Jun 2024</h5>
+              <h5>Feb 2024 - Present</h5>
               <p><em>Python, JavaScript, HTML, CSS</em></p>
               <ul>
                 <li>Contributed to GitHub management, documentation, and binomial heap extraction.</li>
@@ -696,42 +725,41 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
             </div><!-- End Resume Item -->
 
             <div class="resume-item">
-              <h4>WASH WISH-(W2)</h4>
-              <h5>Aug 2024 - Jan 2025</h5>
-              <p><em>Python, Django, HTML, CSS, JavaScript</em></p>
+              <h4>CO2 Emission Detection Using Deep Learning</h4>
+              <h5>Aug 2024 - Jun 2024</h5>
+              <p><em>Python, JavaScript, HTML, CSS, ML</em></p>
               <ul>
-                <li>Developed a full-stack web application for managing laundry services, including user registration, service selection, and order tracking. The system streamlines operations for laundry service providers and customers, improving service efficiency and customer experience.</li>
-                <li>Key features: secure user sign-up/login, order placement, and real-time tracking. Admins manage users and orders through a dedicated panel. The system uses Django templates, static file handling, and Python-based backend logic, offering a clean, responsive design that works smoothly across devices with well-organized files and user-friendly interfaces.</li>
-              </ul>
-            </div><!-- End Resume Item -->
-
-            <div class="resume-item">
-              <h4>CO2 Emission Detection Using Deeplearning Project</h4>
-              <h5>Aug 2024 - Dec 2025</h5>
-              <p><em>Python, Deeplearning, CSS</em></p>
-              <ul>
+                <li>Built and deployed a robust real-time system that classifies carbon monoxide (CO) levels from time-series sensor data.</li>
                 <li>Developed and trained a deep learning model for CO concentration classification using time-series sensor data.</li>
-                <li>Performed data preprocessing, feature extraction, and model optimization for robust performance. Integrated the model into a Python-based software system for real-time CO level detection. Implemented modular code architecture for scalable and maintainable ML pipelines. Evaluated model accuracy using cross-validation and improved performance through hyperparameter tuning.</li>
+                <li>Performed data preprocessing, feature extraction, and model optimization for robust performance.</li>
+                <li>Integrated the model into a Python-based software system for real-time CO level detection.</li>
+                <li>Implemented modular code architecture for scalable and maintainable ML pipelines.</li>
               </ul>
             </div><!-- End Resume Item -->
 
             <div class="resume-item">
-              <h4>ComputerVision-Road Anomaly Detection: speed bumps,potholes,cracks Project</h4>
+              <h4>Computer Vision - Road Anomaly Detection</h4>
               <h5>Jan 2025 - May 2025</h5>
-              <p><em>Python, JavaScript, HTML, CSS, Flask</em></p>
+              <p><em>Python, JavaScript, HTML, CSS, Flask, ML</em></p>
               <ul>
-                <li>GitHub management, documentation, ML model creation, labelling of model images to train.</li>
-                <li>Developed UI to enable interaction between different scenes.</li>
-                <li>Developed a machine learning-based road anomaly detection system utilizing the YOLOv8 Nano model. The model was trained to identify road surface anomalies such as potholes and speed bumps using a computer vision dataset. Integrated the system with a Flask-based web application for real-time detection. Focused on optimizing detection performance and streamlining the future integration of real-time updates for improved accuracy and efficiency. The project demonstrates proficiency in machine learning, computer vision, and web development.</li>
+                <li>Developed a machine learning-based road anomaly detection system utilizing the YOLOv8 Nano model.</li>
+                <li>Trained the model to identify road surface anomalies (potholes, speed bumps) using computer vision dataset.</li>
+                <li>Integrated the system with a Flask-based web application for real-time detection.</li>
+                <li>Focused on optimizing detection performance and streamlining future integration of real-time updates.</li>
+                <li>Demonstrates proficiency in machine learning, computer vision, and web development.</li>
               </ul>
             </div><!-- End Resume Item -->
 
             <div class="resume-item">
-              <h4>DQN-Snake game -Project (reinforcement Learning)</h4>
-              <h5>Jan 2025 - May 2025</h5>
+              <h4>DQN-Snake Game (Reinforcement Learning)</h4>
+              <h5>Jan 2025 - Present</h5>
               <p><em>Flutter, Dart</em></p>
               <ul>
-                <li>Snake Game with Reinforcement Learning — Flutter, Dart. Developed a modular Snake Game in Flutter with both manual and AI gameplay modes. Integrated a Q-learning-based Reinforcement Learning agent to autonomously learn and play the game. Used simplified game state encoding and Q-table updates for real-time decision-making. Implemented persistent high scores and settings using shared_preferences. Focused on clean UI, sound effects, and theme switching for better user experience.</li>
+                <li>Created an interactive Snake game that demonstrates and evaluates reinforcement learning.</li>
+                <li>Developed a modular Snake Game in Flutter with both manual and AI gameplay modes.</li>
+                <li>Integrated a Q-learning-based Reinforcement Learning agent to autonomously learn and play the game.</li>
+                <li>Used simplified game state encoding and Q-table updates for real-time decision-making.</li>
+                <li>Implemented persistent high scores and settings using shared_preferences with clean UI and sound effects.</li>
               </ul>
             </div><!-- End Resume Item -->
 
@@ -742,6 +770,85 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
       </div>
 
     </section><!-- /Resume Section -->
+
+    <!-- Competitions & Awards Section -->
+    <section id="competitions" class="competitions section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Competitions & Awards</h2>
+        <p>My achievements in coding competitions, academic excellence, and professional recognition.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-trophy"></i></div>
+              <div>
+                <h4 class="title">CodeSprint Winner</h4>
+                <p class="description">Winner - CodeClash - The Battle of Logic and Code (Jul 2025)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-award"></i></div>
+              <div>
+                <h4 class="title">DSA MasterMind Winner</h4>
+                <p class="description">Winner - CodeClash (Jun 2025)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
+              <div>
+                <h4 class="title">Coding Competition</h4>
+                <p class="description">DTC team - Coders Arena - The Battle of Algorithm (Jun 2025)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-search"></i></div>
+              <div>
+                <h4 class="title">Treasure Hunt</h4>
+                <p class="description">Samsung Galaxy AI (Jun 2025)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-car-front"></i></div>
+              <div>
+                <h4 class="title">Mobilation 4.0</h4>
+                <p class="description">VolksWagen (Jan 2025)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="competition-item d-flex">
+              <div class="icon flex-shrink-0"><i class="bi bi-mortarboard"></i></div>
+              <div>
+                <h4 class="title">Merit Cum Means Scholarship</h4>
+                <p class="description">SSN College of Engineering (Sep 2024)</p>
+              </div>
+            </div>
+          </div><!-- End Competition Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Competitions Section -->
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section light-background">
@@ -769,6 +876,22 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
+              <div class="portfolio-content h-100">
+                <a href="https://perfect-no-primality-test.onrender.com/" target="_blank" title="Live Demo: Mersenne Prime Discovery System" data-gallery="portfolio-gallery-web" class="glightbox preview-link">
+                  <img src="assets/licensed-image.jpg" class="img-fluid" alt="Mersenne Prime Discovery System">
+                </a>
+                <div class="portfolio-info">
+                  <h4>Mersenne Prime Discovery System</h4>
+                  <div class="portfolio-links">
+                    <a href="https://perfect-no-primality-test.onrender.com/" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
+                    <a href="#" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
+                  </div>
+                  <p class="tech-stack">Python, Flask, HTML/CSS</p>
+                </div>
+              </div>
+            </div>
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
               <div class="portfolio-content h-100">
@@ -863,7 +986,7 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Services</h2>
-        <p>I offer a comprehensive range of development and technical services, leveraging my expertise in web development, data science, and software engineering to deliver innovative solutions for your needs.</p>
+        <p>I offer a comprehensive range of development and technical services, leveraging my academic expertise in web development, data science, and software engineering to deliver innovative solutions for your needs.</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -1049,7 +1172,7 @@ My academic path is a reflection of that mindset: driven by curiosity, guided by
 
         <div class="row">
           <div class="col-lg-12">
-            <form action="https://formsubmit.co/jayaraman2212066@gmail.com" method="POST" class="php-email-form">
+            <form action="https://formsubmit.co/jayaraman2212066@ssn.edu.in" method="POST" class="php-email-form">
               <input type="hidden" name="_subject" value="New Portfolio Contact!">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_captcha" value="false">

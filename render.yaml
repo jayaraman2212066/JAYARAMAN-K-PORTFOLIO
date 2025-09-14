@@ -1,19 +1,15 @@
 services:
   - type: web
     name: jayaraman-k-portfolio
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn portfolio.wsgi:application
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.9.0
-      - key: SECRET_KEY
-        generateValue: true
-      - key: DEBUG
-        value: false
-      - key: EMAIL_HOST_USER
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: EMAIL_USER
         sync: false
-      - key: EMAIL_HOST_PASSWORD
+      - key: EMAIL_PASSWORD
         sync: false
       - key: ADMIN_EMAIL
         value: jayaraman2212066@ssn.edu.in 
