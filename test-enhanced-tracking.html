@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Visitor Tracking Test - Jayaraman K Portfolio</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #18d26e;
+        }
+        h1 {
+            color: #18d26e;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #18d26e;
+        }
+        .test-section h2 {
+            color: #0ea5e9;
+            margin-top: 0;
+        }
+        .btn {
+            background: linear-gradient(90deg, #18d26e 0%, #0ea5e9 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(24, 210, 110, 0.4);
+        }
+        .btn-secondary {
+            background: linear-gradient(90deg, #666 0%, #888 100%);
+        }
+        .btn-danger {
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+        .status {
+            background: rgba(24, 210, 110, 0.2);
+            border: 1px solid #18d26e;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .status.error {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: #ff6b6b;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #18d26e;
+            font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            font-size: 14px;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #18d26e;
+            box-shadow: 0 0 10px rgba(24, 210, 110, 0.3);
+        }
+        .data-display {
+            background: #222;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #444;
+        }
+        .cookie-list {
+            max-height: 200px;
+            overflow-y: auto;
+            background: #111;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .cookie-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #333;
+        }
+        .cookie-name {
+            color: #18d26e;
+            font-weight: bold;
+        }
+        .cookie-value {
+            color: #0ea5e9;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Enhanced Visitor Tracking Test Dashboard</h1>
+        
+        <div class="test-section">
+            <h2>📊 Automatic Tracking Status</h2>
+            <div id="tracking-status" class="status">
+                <p>🚀 Automatic comprehensive tracking system initializing...</p>
+            </div>
+            <button class="btn" onclick="checkTrackingStatus()">Check Status</button>
+            <button class="btn btn-secondary" onclick="forceDataCollection()">Force Data Collection</button>
+            <button class="btn btn-secondary" onclick="showPersonalInfoModal()">Show Personal Info Modal</button>
+        </div>
+
+        <div class="test-section">
+            <h2>🍪 Cookie Collection Test</h2>
+            <p>Current cookies detected:</p>
+            <div id="cookie-display" class="cookie-list">
+                <p>Loading cookies...</p>
+            </div>
+            <button class="btn" onclick="displayCookies()">Refresh Cookie List</button>
+            <button class="btn btn-secondary" onclick="createTestCookies()">Create Test Cookies</button>
+            <button class="btn btn-danger" onclick="clearTestCookies()">Clear Test Cookies</button>
+        </div>
+
+        <div class="test-section">
+            <h2>💾 Storage Data Test</h2>
+            <div class="form-group">
+                <label for="storage-key">Storage Key:</label>
+                <input type="text" id="storage-key" placeholder="Enter key">
+            </div>
+            <div class="form-group">
+                <label for="storage-value">Storage Value:</label>
+                <input type="text" id="storage-value" placeholder="Enter value">
+            </div>
+            <button class="btn" onclick="addToStorage()">Add to LocalStorage</button>
+            <button class="btn btn-secondary" onclick="displayStorage()">Display All Storage</button>
+            <button class="btn btn-danger" onclick="clearStorage()">Clear Storage</button>
+            <div id="storage-display" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📝 Form Submission Test</h2>
+            <form id="test-form" onsubmit="testFormSubmission(event)">
+                <div class="form-group">
+                    <label for="test-name">Name:</label>
+                    <input type="text" id="test-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="test-email">Email:</label>
+                    <input type="email" id="test-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="test-phone">Phone:</label>
+                    <input type="tel" id="test-phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="test-company">Company:</label>
+                    <input type="text" id="test-company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="test-message">Message:</label>
+                    <textarea id="test-message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Test Form</button>
+            </form>
+        </div>
+
+        <div class="test-section">
+            <h2>🌍 Location & Device Test</h2>
+            <button class="btn" onclick="getLocation()">Get Geolocation</button>
+            <button class="btn btn-secondary" onclick="displayDeviceInfo()">Display Device Info</button>
+            <button class="btn btn-secondary" onclick="displayBrowserInfo()">Display Browser Info</button>
+            <div id="location-display" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 Browser Fingerprint Test</h2>
+            <button class="btn" onclick="generateFingerprint()">Generate Fingerprint</button>
+            <button class="btn btn-secondary" onclick="displayFingerprint()">Display Current Fingerprint</button>
+            <div id="fingerprint-display" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Comprehensive Data Display</h2>
+            <button class="btn" onclick="displayAllData()">Display All Collected Data</button>
+            <button class="btn btn-secondary" onclick="sendTestData()">Send Test Data to Server</button>
+            <div id="comprehensive-data" class="data-display"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎯 Automatic Personal Info Collection</h2>
+            <button class="btn" onclick="showPersonalInfoModal()">Show Personal Info Modal</button>
+            <p>The personal information modal appears automatically after 3 seconds on page load.</p>
+            <p><strong>Note:</strong> Even if users close the modal, the system still extracts available personal data from storage and cookies.</p>
+        </div>
+    </div>
+
+    <!-- Include the enhanced tracking scripts -->
+    <script src="assets/js/enhanced-visitor-tracking.js"></script>
+    <script src="assets/js/enhanced-form-tracking.js"></script>
+
+    <script>
+        // Test functions
+        function checkTrackingStatus() {
+            const status = document.getElementById('tracking-status');
+            if (window.enhancedTracker) {
+                status.innerHTML = `
+                    <p>✅ Automatic comprehensive tracker is active</p>
+                    <p>🆔 Session ID: ${window.enhancedTracker.sessionId}</p>
+                    <p>🚀 Automatic Tracking: ${window.enhancedTracker.isTrackingEnabled}</p>
+                    <p>🍪 Data Collection: ${window.enhancedTracker.cookieConsent ? 'Active' : 'Disabled'}</p>
+                    <p>📊 Data Collected: ${Object.keys(window.enhancedTracker.visitorData || {}).length} categories</p>
+                `;
+            } else {
+                status.innerHTML = '<p>❌ Enhanced tracker not found</p>';
+                status.classList.add('error');
+            }
+        }
+
+        function forceDataCollection() {
+            if (window.enhancedTracker) {
+                window.enhancedTracker.collectComprehensiveData();
+                setTimeout(() => {
+                    window.enhancedTracker.sendComprehensiveData();
+                }, 1000);
+                document.getElementById('tracking-status').innerHTML = '<p>🔄 Forcing data collection...</p>';
+            }
+        }
+
+        function displayCookies() {
+            const cookieDisplay = document.getElementById('cookie-display');
+            const cookies = document.cookie.split(';');
+            if (cookies.length === 0 || (cookies.length === 1 && cookies[0] === '')) {
+                cookieDisplay.innerHTML = '<p>No cookies found</p>';
+            } else {
+                cookieDisplay.innerHTML = cookies.map(cookie => {
+                    const [name, value] = cookie.trim().split('=');
+                    return `<div class="cookie-item">
+                        <span class="cookie-name">${name}</span>
+                        <span class="cookie-value">${value}</span>
+                    </div>`;
+                }).join('');
+            }
+        }
+
+        function createTestCookies() {
+            // Create test cookies
+            document.cookie = "test_cookie_1=value1; expires=Fri, 31 Dec 2025 23:59:59 GMT";
+            document.cookie = "test_cookie_2=value2; expires=Fri, 31 Dec 2025 23:59:59 GMT";
+            document.cookie = "social_media_token=abc123; expires=Fri, 31 Dec 2025 23:59:59 GMT";
+            document.cookie = "user_preference=dark_mode; expires=Fri, 31 Dec 2025 23:59:59 GMT";
+            displayCookies();
+        }
+
+        function clearTestCookies() {
+            document.cookie = "test_cookie_1=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie = "test_cookie_2=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie = "social_media_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            document.cookie = "user_preference=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            displayCookies();
+        }
+
+        function addToStorage() {
+            const key = document.getElementById('storage-key').value;
+            const value = document.getElementById('storage-value').value;
+            if (key && value) {
+                localStorage.setItem(key, value);
+                displayStorage();
+                document.getElementById('storage-key').value = '';
+                document.getElementById('storage-value').value = '';
+            }
+        }
+
+        function displayStorage() {
+            const storageDisplay = document.getElementById('storage-display');
+            const data = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                data[key] = localStorage.getItem(key);
+            }
+            storageDisplay.textContent = JSON.stringify(data, null, 2);
+        }
+
+        function clearStorage() {
+            localStorage.clear();
+            displayStorage();
+        }
+
+        function testFormSubmission(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            if (window.enhancedFormTracker) {
+                // Simulate form submission tracking
+                const comprehensiveData = {
+                    timestamp: new Date().toISOString(),
+                    formType: 'test_form',
+                    formData: data,
+                    sessionId: window.enhancedTracker?.sessionId || 'unknown'
+                };
+                
+                window.enhancedFormTracker.sendFormData(comprehensiveData, 'test_form');
+                alert('Test form submitted! Check your email for comprehensive form data.');
+            }
+        }
+
+        function getLocation() {
+            const locationDisplay = document.getElementById('location-display');
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        locationDisplay.textContent = JSON.stringify({
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            accuracy: position.coords.accuracy
+                        }, null, 2);
+                    },
+                    (error) => {
+                        locationDisplay.textContent = `Geolocation error: ${error.message}`;
+                    }
+                );
+            } else {
+                locationDisplay.textContent = 'Geolocation not supported';
+            }
+        }
+
+        function displayDeviceInfo() {
+            const locationDisplay = document.getElementById('location-display');
+            const deviceInfo = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                colorDepth: screen.colorDepth,
+                pixelRatio: window.devicePixelRatio,
+                touchSupport: 'ontouchstart' in window,
+                hardwareConcurrency: navigator.hardwareConcurrency,
+                deviceMemory: navigator.deviceMemory
+            };
+            locationDisplay.textContent = JSON.stringify(deviceInfo, null, 2);
+        }
+
+        function displayBrowserInfo() {
+            const locationDisplay = document.getElementById('location-display');
+            const browserInfo = {
+                appName: navigator.appName,
+                appVersion: navigator.appVersion,
+                cookieEnabled: navigator.cookieEnabled,
+                onLine: navigator.onLine,
+                doNotTrack: navigator.doNotTrack,
+                plugins: Array.from(navigator.plugins).map(p => p.name),
+                mimeTypes: Array.from(navigator.mimeTypes).map(m => m.type)
+            };
+            locationDisplay.textContent = JSON.stringify(browserInfo, null, 2);
+        }
+
+        function generateFingerprint() {
+            if (window.enhancedTracker) {
+                window.enhancedTracker.visitorData.fingerprint = window.enhancedTracker.generateFingerprint();
+                displayFingerprint();
+            }
+        }
+
+        function displayFingerprint() {
+            const fingerprintDisplay = document.getElementById('fingerprint-display');
+            if (window.enhancedTracker && window.enhancedTracker.visitorData.fingerprint) {
+                fingerprintDisplay.textContent = `Browser Fingerprint: ${window.enhancedTracker.visitorData.fingerprint}`;
+            } else {
+                fingerprintDisplay.textContent = 'No fingerprint generated yet. Click "Generate Fingerprint" first.';
+            }
+        }
+
+        function displayAllData() {
+            const dataDisplay = document.getElementById('comprehensive-data');
+            if (window.enhancedTracker && window.enhancedTracker.visitorData) {
+                dataDisplay.textContent = JSON.stringify(window.enhancedTracker.visitorData, null, 2);
+            } else {
+                dataDisplay.textContent = 'No comprehensive data available yet.';
+            }
+        }
+
+        function sendTestData() {
+            if (window.enhancedTracker) {
+                window.enhancedTracker.sendComprehensiveData();
+                alert('Test data sent! Check your email for comprehensive visitor data.');
+            }
+        }
+
+        function showPersonalInfoModal() {
+            if (window.enhancedFormTracker) {
+                const modal = document.getElementById('personal-info-modal');
+                if (modal) {
+                    modal.style.display = 'block';
+                }
+            }
+        }
+
+        // Initialize display on page load
+        window.addEventListener('load', function() {
+            displayCookies();
+            displayStorage();
+            setTimeout(checkTrackingStatus, 1000);
+        });
+    </script>
+</body>
+</html>
