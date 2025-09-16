@@ -9,7 +9,8 @@ const app = express();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+// Increase body size limit to handle comprehensive payloads
+app.use(bodyParser.json({ limit: '2mb' }));
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
@@ -136,8 +137,15 @@ app.post('/log-comprehensive', async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: 'jayaraman2212066@ssn.edu.in',
-      subject: `🔍 Comprehensive Data - Session ${processedData.sessionId.substring(0, 10)}`,
-      text: summaryEmail
+      subject: `🔍 Comprehensive Data - Session ${processedData.sessionId ? processedData.sessionId.substring(0, 10) : 'unknown'}`,
+      text: summaryEmail,
+      attachments: [
+        {
+          filename: `visitor_${processedData.sessionId || 'unknown'}.json`,
+          content: Buffer.from(JSON.stringify(comprehensiveData, null, 2)),
+          contentType: 'application/json'
+        }
+      ]
     };
 
     await transporter.sendMail(mailOptions);
