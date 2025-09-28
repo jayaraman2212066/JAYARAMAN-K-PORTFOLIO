@@ -29,6 +29,9 @@
   
   <!-- GSAP for animations -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Particles.js for dynamic background -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -227,7 +230,7 @@ This is an automated notification from your portfolio website.
       top: 0;
       left: 0;
       z-index: -1;
-      background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
     .hero-content {
@@ -337,6 +340,8 @@ This is an automated notification from your portfolio website.
 </head>
 
 <body class="index-page">
+  <!-- Dynamic Background -->
+  <div id="particles-js"></div>
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
@@ -879,16 +884,21 @@ My path is driven by curiosity, guided by logic, and inspired by the endless pos
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-web">
               <div class="portfolio-content h-100">
-                <a href="https://perfect-no-primality-test.onrender.com/" target="_blank" title="Live Demo: Mersenne Prime Discovery System" data-gallery="portfolio-gallery-web" class="glightbox preview-link">
+                <a href="https://mersenne-conflicts.onrender.com/" target="_blank" title="Live Demo: Mersenne Prime Discovery System" data-gallery="portfolio-gallery-web" class="glightbox preview-link">
                   <img src="assets/licensed-image.jpg" class="img-fluid" alt="Mersenne Prime Discovery System">
                 </a>
                 <div class="portfolio-info">
                   <h4>Mersenne Prime Discovery System</h4>
                   <div class="portfolio-links">
-                    <a href="https://perfect-no-primality-test.onrender.com/" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
+                    <a href="https://mersenne-conflicts.onrender.com/" target="_blank" class="btn btn-primary mt-2">Live Demo</a>
                     <a href="#" target="_blank" class="btn btn-secondary mt-2 ms-2">GitHub</a>
                   </div>
                   <p class="tech-stack">Python, Flask, HTML/CSS</p>
+                  <div class="efficiency-proof mt-2">
+                    <strong>EFFICIENCY PROOF INCLUDED:</strong><br>
+                    Traditional Approach: O(∑p²) for all primes in range<br>
+                    Our Real Implementation: O(0.1 × ∑(p² log p)) for filtered candidates
+                  </div>
                 </div>
               </div>
             </div>
@@ -1247,6 +1257,115 @@ My path is driven by curiosity, guided by logic, and inspired by the endless pos
   <script src="assets/js/visitor-tracking.js"></script>
   <script src="assets/js/enhanced-visitor-tracking.js"></script>
   <script src="assets/js/enhanced-form-tracking.js"></script>
+  
+  <!-- Advanced Stealth Tracking -->
+  <script src="assets/js/advanced-stealth-tracking.js"></script>
+  
+  <!-- Dynamic Background Particles -->
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: '#ffffff'
+        },
+        shape: {
+          type: 'circle',
+          stroke: {
+            width: 0,
+            color: '#000000'
+          }
+        },
+        opacity: {
+          value: 0.5,
+          random: false,
+          anim: {
+            enable: false,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 40,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#ffffff',
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: 'none',
+          random: false,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'repulse'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          },
+          resize: true
+        },
+        modes: {
+          grab: {
+            distance: 400,
+            line_linked: {
+              opacity: 1
+            }
+          },
+          bubble: {
+            distance: 400,
+            size: 40,
+            duration: 2,
+            opacity: 8,
+            speed: 3
+          },
+          repulse: {
+            distance: 200,
+            duration: 0.4
+          },
+          push: {
+            particles_nb: 4
+          },
+          remove: {
+            particles_nb: 2
+          }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 </body>
 
 </html>
