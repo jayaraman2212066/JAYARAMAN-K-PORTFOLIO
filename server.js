@@ -277,7 +277,8 @@ app.get('*', (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Dynamic Portfolio Server running on port ${PORT}`);
+  console.log(`🕵️ Advanced Stealth Tracking Active`);
 }); 
